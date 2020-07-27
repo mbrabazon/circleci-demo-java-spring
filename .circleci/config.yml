@@ -34,8 +34,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: |
-                ls artifacts
-                ls
+                docker build -t circleci-demo .
 workflows:
   version: 2
   build_and_test:
