@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  docker: circleci/docker@1.3.0
 jobs:
   build_app:
     working_directory: ~/circleci-demo-java-spring
@@ -39,12 +41,14 @@ jobs:
       - run: |
                 docker build -t circleci-demo .
                 docker tag circleci-demo:latest mattbrabazon/circleci-demo:latest
-                docker push mattbrabazon/circleci-demo:latest
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_app
+      - docker/publish:
+          deploy: false
+          image: mattbrabazon/circleci-demo
       - build_container:
           requires:
             - build_app
