@@ -34,19 +34,16 @@ jobs:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
-      - checkout
       - setup_remote_docker
       - attach_workspace:
           at: .
-      - docker/build:
-          image: mattbrabazon/circleci-demo
-          path: project
-          tag: latest
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_app
-      - build_container:
+      - docker/publish:
           requires:
             - build_app
+          image: mattbrabazon/circleci-demo
+          attach-at: .
