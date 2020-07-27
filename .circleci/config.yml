@@ -47,8 +47,8 @@ workflows:
     jobs:
       - build_app
       - docker/publish:
-          deploy: false
-          image: mattbrabazon/circleci-demo
-      - build_container:
           requires:
             - build_app
+          dockerfile: /project/Dockerfile
+          image: mattbrabazon/circleci-demo
+          path: /project/artifacts
