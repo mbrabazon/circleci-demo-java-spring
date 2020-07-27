@@ -31,6 +31,6 @@ workflows:
   build_and_test:
     jobs:
       - build_app
-      - build_container
+      - build_container:
           requires:
             - build_app
