@@ -48,3 +48,4 @@ workflows:
           image: mattbrabazon/circleci-demo
           attach-at: .
           docker-username: DOCKER_LOGIN
+          docker-password: DOCKER_PASSWORD
