@@ -41,6 +41,7 @@ jobs:
       - docker/build:
           image: mattbrabazon/circleci-demo
           path: project
+          tag: latest
 workflows:
   version: 2
   build_and_test:
