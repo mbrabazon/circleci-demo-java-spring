@@ -38,17 +38,14 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: .
-      - run: |
-                docker build -t circleci-demo .
-                docker tag circleci-demo:latest mattbrabazon/circleci-demo:latest
+      - docker/build:
+          image: mattbrabazon/circleci-demo
+          path: project
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_app
-      - docker/publish:
+      - build_container:
           requires:
             - build_app
-          dockerfile: /project/Dockerfile
-          image: mattbrabazon/circleci-demo
-          path: /project/artifacts
