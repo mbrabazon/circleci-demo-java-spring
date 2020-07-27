@@ -19,7 +19,7 @@ jobs:
                 mkdir -p /tmp/artifacts
                 cp target/*.jar /tmp/artifacts
       - persist_to_workspace:
-          root: tmp
+          root: /tmp
           paths:
             - artifacts
       - store_artifacts:
