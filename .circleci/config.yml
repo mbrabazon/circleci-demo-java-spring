@@ -47,7 +47,7 @@ workflows:
           requires:
             - build_app
           image: mattbrabazon/circleci-demo
-          attach-at: ./
-          path: ./project
+          attach-at: /tmp
+          path: /tmp/project
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
