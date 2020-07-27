@@ -38,6 +38,7 @@ jobs:
           at: .
       - run: |
                 docker build -t circleci-demo .
+                docker tag circleci-demo:latest mattbrabazon/circleci-demo:latest
                 docker push mattbrabazon/circleci-demo:latest
 workflows:
   version: 2
