@@ -16,14 +16,14 @@ jobs:
       - run: mvn package
       - run: |
                 set -xu
-                mkdir -p /artifacts
-                cp target/*.jar /artifacts
+                mkdir -p artifacts
+                cp target/*.jar artifacts
       - persist_to_workspace:
           root: .
           paths:
             - artifacts
       - store_artifacts:
-          path: /artifacts
+          path: artifacts
   build_container:
     working_directory: /app
     docker:
@@ -33,7 +33,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: |
-                ls /artifacts
+                ls artifacts
 workflows:
   version: 2
   build_and_test:
