@@ -43,6 +43,7 @@ workflows:
     jobs:
       - build_app
       - docker/publish:
+          context: matt_dockerhub
           requires:
             - build_app
           image: mattbrabazon/circleci-demo
